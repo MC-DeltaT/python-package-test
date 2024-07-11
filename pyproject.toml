@@ -24,6 +24,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.dynamic]
 dependencies = { file = [ "requirements/package.txt" ] }
 
+[tool.setuptools_scm]
+
 [tool.ruff]
 line-length = 120
 lint.extend-select = ["I"]
