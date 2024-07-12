@@ -30,6 +30,8 @@ jobs:
         python3.9 -m pip install -r requirements/tox-only.txt
     - name: Linting
       run: tox run -e lint
+    - name: Static typing
+      run: tox run -e typing
     - name: Unit tests
       # Run all unit test environments across all Python versions
       run: tox run-parallel -m unittest -s false
