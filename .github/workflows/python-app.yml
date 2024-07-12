@@ -19,18 +19,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: |
-          3.9
-          3.10
-          3.11
-          3.12
+        python-version: [ "3.9", "3.10", "3.11", "3.12" ]
     - name: Install dependencies
       run: |
         python3.9 -m pip install --upgrade pip
         python3.9 -m pip install -r requirements/tox-only.txt
     - name: Linting
-      run: |
-        tox run -e lint
+      run: tox run -e lint
     - name: Unit tests
-      run: |
-        tox run -e py39,py310,py311,py312
+      # Run all unit test environments across all Python versions
+      run: tox run -m unittest -s false
