@@ -5,7 +5,9 @@
 #    pip-compile --output-file=dev-all.txt dev-only.in lint-only.txt package.txt tox-only.txt typing-only.txt unittest-only.txt
 #
 build==1.2.1
-    # via pip-tools
+    # via
+    #   -r dev-only.in
+    #   pip-tools
 cachetools==5.3.3
     # via
     #   -r tox-only.txt
