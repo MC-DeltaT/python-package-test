@@ -4,8 +4,6 @@
 #
 #    pip-compile --constraint=package.txt unittest-only.in
 #
-colorama==0.4.6
-    # via pytest
 exceptiongroup==1.2.1
     # via pytest
 iniconfig==2.0.0

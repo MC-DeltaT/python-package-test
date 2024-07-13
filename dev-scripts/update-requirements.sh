@@ -13,7 +13,7 @@ pip-compile lint-only.in -c package.txt
 echo "Compiling static typing requirements"
 pip-compile typing-only.in -c package.txt
 
-echo "Compiling test requirements"
+echo "Compiling unit test requirements"
 pip-compile unittest-only.in -c package.txt
 
 echo "Compiling tox requirements"

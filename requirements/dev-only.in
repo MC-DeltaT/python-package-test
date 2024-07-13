@@ -1,2 +1,3 @@
 build
 pip-tools
+pre-commit
