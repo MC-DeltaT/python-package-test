@@ -6,6 +6,5 @@ __all__ = ["func"]
 
 def func(x: float) -> float:
     requests.get
-    numpy.array
 
-    return x * 2
+    return numpy.sum(numpy.linspace(1, x, 10, dtype=float))
