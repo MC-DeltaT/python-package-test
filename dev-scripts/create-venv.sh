@@ -15,6 +15,7 @@ python -m pip install --upgrade pip
 
 echo "Installing dev dependencies"
 pip install -r requirements/dev-all.txt
+pip install -e .
 
 echo "Installing pre-commit hook"
 pre-commit install

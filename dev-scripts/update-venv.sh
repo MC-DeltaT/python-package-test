@@ -10,3 +10,4 @@ pip install --upgrade pip
 
 echo "Syncing packages"
 pip-sync requirements/dev-all.txt
+pip install -e .
