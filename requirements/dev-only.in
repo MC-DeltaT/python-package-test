@@ -1,3 +1,7 @@
 build
 pip-tools
 pre-commit
+# Install our package in editable mode so it's usable in the Python interpreter without installing (handy for testing).
+# Need to use this syntax to avoid pip-compile producing an absolute file path.
+# Also note the path must be relative to the project root directory.
+-e file:.

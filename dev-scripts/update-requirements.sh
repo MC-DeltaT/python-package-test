@@ -1,24 +1,30 @@
 #!/usr/bin/env bash
 
+# Recompile Python package requirements .txt files based on the .in requirements files.
+
 set -e
 
-cd requirements
+# Note we compile the requirements in the project root directory, since most tooling operates in the root.
+# Particularly, the package editable mode install uses a relative path.
+# That path must align with the root directory for it to be pip-install'ed in the root directory later.
 
 echo "Compiling base package requirements"
-pip-compile package.in -o package.txt
+pip-compile requirements/package.in -o requirements/package.txt
 
 echo "Compiling lint requirements"
-pip-compile lint-only.in -c package.txt 
+pip-compile requirements/lint-only.in -c requirements/package.txt 
 
 echo "Compiling static typing requirements"
-pip-compile typing-only.in -c package.txt
+pip-compile requirements/typing-only.in -c requirements/package.txt
 
 echo "Compiling unit test requirements"
-pip-compile unittest-only.in -c package.txt
+pip-compile requirements/unittest-only.in -c requirements/package.txt
 
 echo "Compiling tox requirements"
-pip-compile tox-only.in -c package.txt
+pip-compile requirements/tox-only.in -c requirements/package.txt
 
 echo "Compiling dev requirements"
-pip-compile dev-only.in -o dev-all.txt \
-    package.txt lint-only.txt typing-only.txt unittest-only.txt tox-only.txt
+pip-compile requirements/dev-only.in -o requirements/dev-all.txt \
+    requirements/package.txt \
+    requirements/lint-only.txt requirements/typing-only.txt \
+    requirements/unittest-only.txt requirements/tox-only.txt
