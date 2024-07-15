@@ -22,22 +22,21 @@ jobs:
         python-version: 3.9
     - name: Create virtual environment
       run: dev-scripts/create-venv.sh
-    - name: Testing with Tox
+    - name: Activate virtual environment
       run: |
         source .venv/bin/activate
-        tox -m dev
-    - name: Testing with Pytest
-      run: |
-        source .venv/bin/activate
-        pytest
+        # Save virtual environment setup for subsequent Action steps
+        env >> $GITHUB_ENV
+    - name: Test with Tox
+      run: tox -m dev
+    - name: Test with Pytest
+      run: pytest
     - name: Update requirements
       run: dev-scripts/update-requirements.sh
     - name: Update virtual environment
       run: dev-scripts/update-venv.sh
     - name: Package build
-      run: |
-        source .venv/bin/activate
-        python -m build
+      run: python -m build
     - name: Pre-commit run
       run: pre-commit run
     - name: Clean
