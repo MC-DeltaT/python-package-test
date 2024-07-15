@@ -23,15 +23,21 @@ jobs:
     - name: Create virtual environment
       run: dev-scripts/create-venv.sh
     - name: Testing with Tox
-      run: tox -m dev
+      run: |
+        .venv/bin/activate
+        tox -m dev
     - name: Testing with Pytest
-      run: pytest
+      run: |
+        .venv/bin/activate
+        pytest
     - name: Update requirements
       run: dev-scripts/update-requirements.sh
     - name: Update virtual environment
       run: dev-scripts/update-venv.sh
     - name: Package build
-      run: python -m build
+      run: |
+        .venv/bin/activate
+        python -m build
     - name: Pre-commit run
       run: pre-commit run
     - name: Clean
