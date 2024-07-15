@@ -4,9 +4,14 @@
 
 set -e
 
+VENV=.venv
+
 # Note we compile the requirements in the project root directory, since most tooling operates in the root.
 # Particularly, the package editable mode install uses a relative path.
 # That path must align with the root directory for it to be pip-install'ed in the root directory later.
+
+echo "Activating virtual environment"
+source $VENV/bin/activate
 
 echo "Compiling base package requirements"
 pip-compile requirements/package.in -o requirements/package.txt
