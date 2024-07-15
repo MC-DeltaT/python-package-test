@@ -24,11 +24,11 @@ jobs:
       run: dev-scripts/create-venv.sh
     - name: Testing with Tox
       run: |
-        .venv/bin/activate
+        source .venv/bin/activate
         tox -m dev
     - name: Testing with Pytest
       run: |
-        .venv/bin/activate
+        source .venv/bin/activate
         pytest
     - name: Update requirements
       run: dev-scripts/update-requirements.sh
@@ -36,7 +36,7 @@ jobs:
       run: dev-scripts/update-venv.sh
     - name: Package build
       run: |
-        .venv/bin/activate
+        source .venv/bin/activate
         python -m build
     - name: Pre-commit run
       run: pre-commit run
