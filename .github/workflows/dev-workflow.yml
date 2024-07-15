@@ -25,19 +25,27 @@ jobs:
     - name: Activate virtual environment
       run: |
         source .venv/bin/activate
+        echo $(which python)
         # Save virtual environment setup for subsequent Action steps
         env >> $GITHUB_ENV
+        echo $(which python)
     - name: Test with Tox
-      run: tox -m dev
+      run: |
+        echo $(which python)
+        tox -m dev
     - name: Test with Pytest
-      run: pytest
+      run: |
+        echo $(which python)  
+        pytest
     # - name: Update requirements
     #   run: dev-scripts/update-requirements.sh
     # - name: Update virtual environment
     #   run: dev-scripts/update-venv.sh
     - name: Package build
       run: |
+        echo $(which python)
         source .venv/bin/activate
+        echo $(which python)
         python -m build
     - name: Pre-commit run
       run: pre-commit run
