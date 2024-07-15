@@ -36,7 +36,9 @@ jobs:
     # - name: Update virtual environment
     #   run: dev-scripts/update-venv.sh
     - name: Package build
-      run: python -m build
+      run: |
+        source .bin/venv/activate
+        python -m build
     - name: Pre-commit run
       run: pre-commit run
     - name: Clean
