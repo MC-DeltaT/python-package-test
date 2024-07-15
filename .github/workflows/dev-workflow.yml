@@ -1,0 +1,38 @@
+name: Developer workflow checks
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - name: Create virtual environment
+      run: dev-scripts/create-venv.sh
+    - name: Testing with Tox
+      run: tox -m dev
+    - name: Testing with Pytest
+      run: pytest
+    - name: Update requirements
+      run: dev-scripts/update-requirements.sh
+    - name: Update virtual environment
+      run: dev-scripts/update-venv.sh
+    - name: Package build
+      run: python -m build
+    - name: Pre-commit run
+      run: pre-commit run
+    - name: Clean
+      run: dev-scripts/clean.sh
