@@ -27,6 +27,7 @@ jobs:
         source .venv/bin/activate
         # Save virtual environment setup for subsequent Action steps
         env >> $GITHUB_ENV
+        echo $PATH >> $GITHUB_PATH
     - name: Test with Tox
       run: tox -m dev
     - name: Test with Pytest
