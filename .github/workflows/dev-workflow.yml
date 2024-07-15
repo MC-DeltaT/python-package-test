@@ -31,10 +31,10 @@ jobs:
       run: tox -m dev
     - name: Test with Pytest
       run: pytest
-    - name: Update requirements
-      run: dev-scripts/update-requirements.sh
-    - name: Update virtual environment
-      run: dev-scripts/update-venv.sh
+    # - name: Update requirements
+    #   run: dev-scripts/update-requirements.sh
+    # - name: Update virtual environment
+    #   run: dev-scripts/update-venv.sh
     - name: Package build
       run: python -m build
     - name: Pre-commit run
