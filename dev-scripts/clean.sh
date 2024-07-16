@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Deletes all development and build artifacts.
+
 set -e
 
 echo "Deleting all dev and build artifacts"

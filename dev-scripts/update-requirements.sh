@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Recompile Python package requirements .txt files based on the .in requirements files.
+# Recompiles Python package requirements .txt files based on the .in requirements files.
 
 set -e
 
