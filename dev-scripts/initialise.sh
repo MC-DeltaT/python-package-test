@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Creates the Python virtual environment for use in local development.
+# Sets up the project for local development.
 # Run this when you first check out the repository.
 
 set -e
