@@ -13,9 +13,9 @@ The project targets Python >=3.9 on Linux. Windows could be supported too, altho
 
 ## Package Dependencies
 
-Python package dependencies are managed with requirements files and pip-tools. The goal with dependencies is to ensure consistency across multiple environments - development, testing, CI, and deployment - without inefficiently lumping all requirements together.
+Python package dependencies are managed with multiple requirements files. The goal is to ensure consistency across multiple environments - development, testing, CI, and deployment - without inefficiently lumping all requirements together.
 
-The core package dependencies are specified in `package.in`. These are the dependencies that are required when users install the published package. Additional dependencies required in specific scenarios are provided in other files: for example, `unittest-only.in` for unit testing. Finally, `dev-all.txt` compiles all dependencies required in all scenarios to ensure developers can run everything locally.
+The core package dependencies are specified in `package.txt`. These are the dependencies that are required when users install the published package. Additional dependencies required in specific scenarios are provided in other files: for example, `unittest-only.txt` for unit testing.
 
 Notably, additional dependencies are not provided as "optional dependencies" on the package (e.g. `pip install python-package-test[dev]`). This is because I don't believe one should be installing the package to, for example, run tests - check out the project source instead.
 

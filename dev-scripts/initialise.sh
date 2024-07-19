@@ -5,20 +5,14 @@
 
 set -e
 
-PYTHON=python3.9
+PYTHON_VERSION=python3.9
 VENV=.venv
+PYTHON=.venv/bin/python
 
 echo "Creating virtual environment"
-$PYTHON -m venv $VENV
+$PYTHON_VERSION -m venv $VENV
 
-echo "Activating virtual environment"
-source $VENV/bin/activate
-
-echo "Updating pip"
-python -m pip install --upgrade pip
-
-echo "Installing dev dependencies"
-pip install -r requirements/dev-all.txt
+dev-scripts/install-deps.sh
 
 echo "Installing pre-commit hook"
-pre-commit install
+$VENV/bin/pre-commit install
